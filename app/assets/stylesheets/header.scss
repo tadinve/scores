@@ -54,3 +54,14 @@ header {
 .brand {
 	@include mt(5px);
 }
+
+.logo {
+	@include logo_bg;
+	height: 40px; // This has to be altered to get perfect logo view.
+	width: 227px; // This has to be altered to get perfect logo view.
+	@include db;
+	@include fl;
+	&:hover {
+		@include logo_bg;
+	}
+}
