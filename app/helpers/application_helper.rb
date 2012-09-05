@@ -71,4 +71,40 @@ module ApplicationHelper
 		image_tag "http://placehold.it/#{width}x#{height}"
 	end
 	
+	# bootstrap forms field
+
+	def bs_f form, field, opts = {}
+		form_label = opts[:label].present? ? form.label(field, opts[:label], :class => 'control-label') : form.label(field, field.to_s.titleize, :class => 'control-label')
+
+		as_field = form.text_field(field, opts) if opts[:as].nil?
+		as_field = form.text_area(field, opts) if opts[:as]== 'textarea'
+		as_field = form.select(field, opts[:collection], { :prompt => opts[:prompt] }, opts.except(:as, :collection, :prompt)) if opts[:as] == :select
+		
+		# radio buttons for collection
+		if opts[:as] == :radio
+			collection = opts[:collection]
+			as_field = ""
+			collection.each do |radio_opt|
+
+				as_field += content_tag(
+																'label', 
+																(
+																	radio_opt.class == Array ? (form.radio_button( field, radio_opt[0], opts.except(:as, :collection) ) + radio_opt[1]) : (form.radio_button( field, radio_opt, opts.except(:as, :collection) ) + radio_opt)
+																),
+																:class => "radio #{opts[:align]}"
+															)
+			end
+
+		end
+		
+		# form_field = content_tag( 'div', as_field, :class => "controls" ) if opts[:as].nil? 
+		form_field = content_tag( 'div', as_field.html_safe, :class => "controls" )
+		get_row = form_label + form_field
+
+		content_tag('div', get_row, :class => 'control-group')
+	end
+
+	def bool
+		return [[true, 'Yes'], [false, 'No']]
+	end
 end
