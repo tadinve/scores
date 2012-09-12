@@ -18,6 +18,8 @@ gem 'best_in_place'                   # In place editing ?????
 # gem 'activeadmin'                     # For admin dashboard
 gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
 gem "meta_search", '>= 1.1.0.pre'     # Used in admin dashboard, for searching within models.
+gem 'annotate', '~> 2.4.1.beta'
+gem 'bootstrap-will_paginate'
 
 
 group :development, :test do                
