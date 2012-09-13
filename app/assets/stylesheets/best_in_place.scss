@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.best_in_place {
+	@include cp;
+	color: #0088CC; // default color of bootstrap - no option except to hardcode
+	&:hover {
+		text-decoration: underline;
+	}
+}

@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
 	def index
 		@home_page = "This is home page of starter Application"
+		@user = current_user
 	end
 
 	def about

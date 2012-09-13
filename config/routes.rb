@@ -9,6 +9,7 @@ Starter::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy' # added this becaause of sign_out bug.
   end
   
+  resources :users
   resources :authentications
 
   controller :home do
