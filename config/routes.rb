@@ -10,6 +10,10 @@ Starter::Application.routes.draw do
   end
   
   resources :users
+  controller :users do 
+    match '/export_users', :action => 'export_to_excel', :as => 'export_users'
+  end
+
   resources :authentications
 
   controller :home do
