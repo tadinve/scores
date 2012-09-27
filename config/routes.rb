@@ -1,4 +1,4 @@
-Starter::Application.routes.draw do
+Score::Application.routes.draw do
   
   ActiveAdmin.routes(self)
 
@@ -19,13 +19,20 @@ Starter::Application.routes.draw do
   controller :home do
     match '/about', :action => 'about', :as => 'about'
     match '/home', :action => 'index', :as => 'home'
+    match '/score', :action => 'score', :as => 'score'
   end
   
   controller :devise_checker do
     match '/check_devise', :action => 'check_devise', :as => 'check_devise'
   end
 
-  root :to => 'devise_checker#check_devise'
+  authenticated :user do
+    root :to => 'home#score'
+  end
+  unauthenticated :user do
+    root :to => 'devise_checker#check_devise'
+  end
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

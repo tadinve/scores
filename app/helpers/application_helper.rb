@@ -1,17 +1,15 @@
 module ApplicationHelper
 
 	def beautify_params key, value = nil, key_width = 200, opts = {}
-		if value
-			contents = content_tag(
-					'b', key, :class => "fl #{opts[:key_class]}", :style => "width:#{key_width}px; #{opts[:key_style]}"
-				) + content_tag(
-					'div', value, :class => "light_text #{opts[:value_class]}", :style => "margin-left:#{key_width+10}px;  #{opts[:value_style]}"
-				)
-			
-			return content_tag( 
-				'div', contents, :class => 'beautify_params'
+		contents = content_tag(
+				'b', key, :class => "fl #{opts[:key_class]}", :style => "width:#{key_width}px; #{opts[:key_style]}"
+			) + content_tag(
+				'div', (value.present? ? value : ' - '), :class => "light_text #{opts[:value_class]}", :style => "margin-left:#{key_width+10}px;  #{opts[:value_style]}"
 			)
-		end
+		
+		return content_tag( 
+			'div', contents, :class => 'beautify_params'
+		)
 	end
 
 	def image_radius size = 5

@@ -1,9 +1,9 @@
 - user = current_user
 header
-	.navbar.navbar-fixed-top
+	.navbar.navbar-fixed-top.navbar-inverse
 		.navbar-inner
 			.container.pr
-				= link_to '', root_path, :class => 'logo'
+				.brand.white_text T20
 				.nav-collapse.collapse
 					ul.nav.fr
 						- if user_signed_in?

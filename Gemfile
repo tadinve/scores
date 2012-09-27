@@ -20,7 +20,8 @@ gem "meta_search", '>= 1.1.0.pre'     # Used in admin dashboard, for searching w
 gem 'annotate', '~> 2.4.1.beta'
 gem 'bootstrap-will_paginate'
 gem 'spreadsheet'
-
+gem 'nokogiri'
+gem 'mechanize'
 
 group :development, :test do                
   gem "haml-rails", ">= 0.3.4"                # templating engine for views
