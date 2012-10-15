@@ -20,6 +20,7 @@ Score::Application.routes.draw do
     match '/about', :action => 'about', :as => 'about'
     match '/home', :action => 'index', :as => 'home'
     match '/score', :action => 'score', :as => 'score'
+    match '/get_score', :action => 'get_score', :as => 'get_score'
   end
   
   controller :devise_checker do

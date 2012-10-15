@@ -1,6 +1,6 @@
 desc "Fetching Score from CricInfo.comTask description"
 task :fetch_score => :environment do
-	
+
 	require 'mechanize'
 
 	agent = Mechanize.new
@@ -11,6 +11,8 @@ task :fetch_score => :environment do
 	batting_team = innings1_bat.search('.inningsHead td[2]').text
 
 	rows = innings1_bat.search('.inningsRow')
+
+	match_id = Inning.count + 5
 
 	# calculating team statistics.
 	avg_strike_rate = 0.0
@@ -32,7 +34,6 @@ task :fetch_score => :environment do
 		end
 
 	end
-	match_id = Inning.count + 5
 	avg_strike_rate = ((total_runs.to_f/total_balls.to_f)*100).round(2)
 
 	rows.each do |row|

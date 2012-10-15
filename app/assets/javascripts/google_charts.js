@@ -1,8 +1,8 @@
-player_chart = window.player_chart
+team_1_chart = window.team_1_chart
 
 function drawChart(chart_div, graph_title, graphData) {  
   var data = google.visualization.arrayToDataTable(graphData);
-  
+
   var options = {
     title: graph_title,
     // is3D: true,
@@ -18,6 +18,10 @@ function drawChart(chart_div, graph_title, graphData) {
   chart.draw(data, options);
 }
 
-function playerChart() {
-  drawChart('br_chart', 'Br', player_chart)
+function team1Chart() {
+  drawChart('team_1_chart', 'Batting Rate of Team1', team_1_chart)
+}
+
+function team2Chart() {
+  drawChart('team_2_chart', 'Batting Rate Team2', team_2_chart)
 }

@@ -1,0 +1,31 @@
+h2= inning.last.team
+
+table.table-striped.table-bordered.table-condensed width="100%"
+	thead
+		tr
+			th= 'player_name'.titleize
+			th= 'status'.titleize
+			th= 'runs'.titleize
+			th= 'minutes'.titleize
+			th= 'balls'.titleize
+			th= 'fours'.titleize
+			th= 'sixes'.titleize
+			th= 'strike_rate'.titleize
+			th BC
+			th SC
+			th BR
+
+	tbody
+		- inning.each do |row|
+			tr
+				td= row.player_name
+				td= row.status
+				td= row.runs
+				td= row.minutes
+				td= row.balls
+				td= row.fours
+				td= row.sixes
+				td= row.strike_rate
+				td= row.bc
+				td= row.sc
+				td= row.br

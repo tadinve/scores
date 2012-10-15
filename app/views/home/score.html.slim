@@ -1,39 +1,20 @@
-h2= @inning.last.team
+.form-search.pagination-centered
+	.input-append
+		= text_field_tag :url, '', :class => 'search-query', :placeholder => 'Enter match url'
+		= link_to 'Show Match Details', '#', :class => 'btn', :id => 'show_match_details'
 
-table.table-striped.table-bordered.table-condensed width="100%"
-	thead
-		tr
-			th= 'player_name'.titleize
-			th= 'status'.titleize
-			th= 'runs'.titleize
-			th= 'minutes'.titleize
-			th= 'balls'.titleize
-			th= 'fours'.titleize
-			th= 'sixes'.titleize
-			th= 'strike_rate'.titleize
-			th BC
-			th SC
-			th BR
-
-	tbody
-		- @inning.each do |row|
-			tr
-				td= row.player_name
-				td= row.status
-				td= row.runs
-				td= row.minutes
-				td= row.balls
-				td= row.fours
-				td= row.sixes
-				td= row.strike_rate
-				td= row.bc
-				td= row.sc
-				td= row.br
-				
-#br_chart
+- if params[:url]
+	
+	= render :partial => 'score_board', :locals => { :inning => @inning1 }
+	#team_1_chart
+	
+	= render :partial => 'score_board', :locals => { :inning => @inning2 }
+	#team_2_chart
 
 
-javascript:
-	player_chart = #{raw @graph_data.as_json}
-	google.load("visualization", "1", {packages:["columnchart"]});
-	google.setOnLoadCallback(playerChart);
+	javascript:
+		team_1_chart = #{raw @graph_data1.as_json}
+		team_2_chart = #{raw @graph_data2.as_json}
+		google.load("visualization", "1", {packages:["columnchart"]});
+		google.setOnLoadCallback(team1Chart);
+		google.setOnLoadCallback(team2Chart);
