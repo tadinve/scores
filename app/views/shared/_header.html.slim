@@ -9,7 +9,7 @@ header
 						- if user_signed_in?
 							li.no_bg.mrs= user_image user, 'small', :width => '30', :style => 'padding-top: 8px;'
 							li.welcome_name= full_name user
-							li= link_to 'Home', home_path
+							li= link_to 'Home', root_path
 							li= link_to 'About', about_path
 							li= link_to 'Sign Out', destroy_user_session_path
 						- else
